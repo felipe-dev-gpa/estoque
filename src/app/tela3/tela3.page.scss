@@ -20,4 +20,51 @@
 
 
   }
+  .custom-button {
+    display: inline-block;
+    padding: 0.10rem 1.25rem;
+    border-radius: 10rem;
+    color: #fff; /* Cor do texto */
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #0cf; /* Cor de fundo #0cf */
+    border: none; /* Remove a borda padrão */
+  }
 
+  .custom-button ion-icon {
+    font-size: 1.5rem; /* Tamanho do ícone */
+  }
+
+  .custom-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0cf; /* Cor de fundo #0cf */
+    border-radius: 10rem;
+    z-index: -2;
+  }
+
+  .custom-button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Sombra ou efeito ao passar o mouse */
+    transition: width 0.3s ease-in-out;
+    border-radius: 10rem;
+    z-index: -1;
+  }
+
+  .custom-button:hover::before {
+    width: 100%; /* Expande a sombra ao passar o mouse */
+  }

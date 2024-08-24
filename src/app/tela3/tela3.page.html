@@ -1,26 +1,30 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      <img src="assets/icon/logoestoque.png" class="logo">
-     </ion-title>
+      <img src="assets/icon/logoestoque.png" class="logo" alt="Logo Estoque">
+    </ion-title>
+    <ion-buttons slot="end">
+      <button class="custom-button" ion-button icon-only (click)="goToForm()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-
-
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">inventaio</ion-title>
+      <ion-title size="large">Inventário</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let produto of produtos" (click)="goToEdit(produto)">
+      <button class="custom-button" ion-button icon-only (click)="deleteProduto($event, produto)">
+        <ion-icon name="trash" slot="start"></ion-icon>
+      </button>
+      <h2>{{ produto.id }} - {{ produto.nome }}</h2>
+      <ion-note slot="end">{{ produto.tipo }}</ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>
-<div class="center-container">
-  <ion-item>
-    <ion-label position="floating">codigodapeca</ion-label>
-    <ion-input type="number" [(ngModel)]="codigodapeca"></ion-input>
-  </ion-item>
-</div>
-
-

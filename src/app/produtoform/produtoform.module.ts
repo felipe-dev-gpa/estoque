@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Tela2PageRoutingModule } from './tela2-routing.module';
+import { ProdutoformPageRoutingModule } from './produtoform-routing.module';
 
-import { Tela2Page } from './tela2.page';
+import { ProdutoformPage } from './produtoform.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    Tela2PageRoutingModule
+    ProdutoformPageRoutingModule
   ],
-  declarations: [Tela2Page]
+  declarations: [ProdutoformPage]
 })
-export class Tela2PageModule {}
+export class ProdutoformPageModule {}

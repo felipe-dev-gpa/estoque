@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <img src="assets/icon/logoestoque.png" class="logo" alt="Logo Estoque">
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <button class = "custom-button" ion-button icon-only (click)="save()">
+        salvar
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Formulário Produto</ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Peça:</ion-label>
+      <ion-input [(ngModel)]="produto.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Tipo de Produto:</ion-label>
+      <ion-select [(ngModel)]="produto.tipo">
+        <ion-select-option value="filtro">Filtro</ion-select-option>
+        <ion-select-option value="pastilha">Pastilha</ion-select-option>
+        <ion-select-option value="disco">Disco</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  {{ produto.nome }}
+  {{ produto.tipo }}
+</ion-content>

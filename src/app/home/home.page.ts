@@ -1,33 +1,35 @@
-  import { Component } from '@angular/core';
-  import { AlertController } from '@ionic/angular';
-  import { Router } from '@angular/router'; // Importando Router
+import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
-  @Component({
-    selector: 'app-home',
-    templateUrl: 'home.page.html',
-    styleUrls: ['home.page.scss'],
-  })
-  export class HomePage {
-    numeroAcesso: number = 0; // Inicializando com 0 ou use null se preferir
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+})
+export class HomePage {
+  numeroAcesso: number = 0; // Inicializando com 0 ou use null se preferir
+  senha: string = ''; // Adicionando a variável para a senha
 
-    constructor(private alertController: AlertController, private router: Router) {} // Adicionando Router no construtor
+  constructor(
+    private alertController: AlertController,
+    private router: Router
+  ) {}
 
-    async login() {
-      // Suponha que o número de acesso correto seja 1234
-      const CodigoDeAcesso = 1234;
+  async login() {
+    const CodigoDeAcesso = 1234;
+    const SenhaCorreta = 'senha123'; // Suponha que esta seja a senha correta
 
+    if (this.numeroAcesso !== CodigoDeAcesso || this.senha !== SenhaCorreta) {
+      const alert = await this.alertController.create({
+        header: 'Erro',
+        message: 'Número de acesso ou senha incorretos!',
+        buttons: ['OK']
+      });
 
-      if (this.numeroAcesso !== CodigoDeAcesso) {
-        const alert = await this.alertController.create({
-          header: 'Erro',
-          message: 'Número de acesso incorreto!',
-          buttons: ['OK']
-        });
-
-        await alert.present();
-      } else {
-        // Navegando para a próxima tela se o número de acesso estiver correto
-        this.router.navigate(['/tela2']);
-      }
+      await alert.present();
+    } else {
+      this.router.navigate(['/tela3']); // Navegando para a próxima tela se os dados estiverem corretos
     }
   }
+}

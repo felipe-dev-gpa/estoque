@@ -11,13 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'tela2',
-    loadChildren: () => import('./tela2/tela2.module').then( m => m.Tela2PageModule)
-  },
+
   {
     path: 'tela3',
     loadChildren: () => import('./tela3/tela3.module').then( m => m.Tela3PageModule)
+  },
+  {
+    path: 'produtoform',
+    loadChildren: () => import('./produtoform/produtoform.module').then( m => m.ProdutoformPageModule)
   },
 ];
 

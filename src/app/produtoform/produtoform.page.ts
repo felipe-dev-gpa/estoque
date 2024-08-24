@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProdutoServiceService } from '../produto.service';
-import { Produto } from '../produto.service'; // Importando a interface Produto
-import { ToastController } from '@ionic/angular'; // Importando o ToastController
+import { ProdutoServiceService, Produto } from '../produto.service'; // Consolidando os imports
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-produtoform',
@@ -10,20 +9,20 @@ import { ToastController } from '@ionic/angular'; // Importando o ToastControlle
   styleUrls: ['./produtoform.page.scss'],
 })
 export class ProdutoformPage implements OnInit {
-  produto: Produto = { id: '', nome: '', tipo: '' }; // Definindo a propriedade produto
+  produto: Produto = { id: '', nome: '', tipo: '' };
 
   constructor(
     private produtoService: ProdutoServiceService,
     private route: ActivatedRoute,
     private router: Router,
-    private toastCtrl: ToastController // Adicionando o ToastController
+    private toastCtrl: ToastController
   ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const produtoParam = params['produto'];
       if (produtoParam) {
-        this.produto = JSON.parse(produtoParam); // Parsing JSON para converter em objeto
+        this.produto = JSON.parse(produtoParam);
       }
     });
   }
@@ -33,16 +32,16 @@ export class ProdutoformPage implements OnInit {
       message: msg,
       duration: 4000
     });
-    toast.present();
+    await toast.present();
   }
 
   save() {
     if (this.produto.id) {
       // Atualizar produto existente
       this.produtoService.update(this.produto).subscribe(
-        (response) => {
+        () => {
           this.showMessage('Produto atualizado com sucesso!');
-          this.router.navigate(['/tela3']); // Redirecionando para a Tela3
+          this.router.navigate(['/tela3']);
         },
         (error) => {
           this.showMessage('Erro ao atualizar produto: ' + error.message);
@@ -50,15 +49,19 @@ export class ProdutoformPage implements OnInit {
       );
     } else {
       // Salvar novo produto
-      this.produtoService.save(this.produto).subscribe(
-        (response) => {
+      this.produtoService.save({ ...this.produto, id: this.generateUniqueId() }).subscribe(
+        () => {
           this.showMessage('Produto salvo com sucesso!');
-          this.router.navigate(['/tela3']); // Redirecionando para a Tela3
+          this.router.navigate(['/tela3']);
         },
         (error) => {
           this.showMessage('Erro ao salvar produto: ' + error.message);
         }
       );
     }
+  }
+
+  private generateUniqueId(): string {
+    return Math.random().toString(36).substr(2, 9);
   }
 }

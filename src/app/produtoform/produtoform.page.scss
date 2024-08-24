@@ -71,23 +71,6 @@ ion-title {
   z-index: -2;
 }
 
-.custom-button::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2); /* Sombra ou efeito ao passar o mouse */
-  transition: width 0.3s ease-in-out;
-  border-radius: 10rem;
-  z-index: -1;
-}
-
-.custom-button:hover::before {
-  width: 100%; /* Expande a sombra ao passar o mouse */
-}
-
 
 
 

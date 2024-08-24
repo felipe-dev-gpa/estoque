@@ -84,9 +84,6 @@ body {
       z-index: -1;
     }
 
-    &:hover:before {
-      width: 100%;
-    }
   }
   ion-item {
     --border-radius: 50rem;  /* Adiciona bordas arredondadas */

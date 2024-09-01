@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProdutoServiceService, Produto } from '../produto.service'; // Consolidando os imports
+import { ProdutoServiceService, Produto } from '../produto.service';
 import { ToastController } from '@ionic/angular';
+import { NgForm } from '@angular/forms'; // Import necessário para usar NgForm
 
 @Component({
   selector: 'app-produtoform',
@@ -9,7 +10,9 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./produtoform.page.scss'],
 })
 export class ProdutoformPage implements OnInit {
-  produto: Produto = { id: '', nome: '', tipo: '' };
+  produto: Produto = { id: '', nome: '', tipo: '', local: '', codigoDeBarra: '', marca: '' };
+
+  @ViewChild('produtoForm', { static: false }) produtoForm!: NgForm; // Adicione o operador de asserção de não nulo
 
   constructor(
     private produtoService: ProdutoServiceService,
@@ -36,28 +39,32 @@ export class ProdutoformPage implements OnInit {
   }
 
   save() {
-    if (this.produto.id) {
-      // Atualizar produto existente
-      this.produtoService.update(this.produto).subscribe(
-        () => {
-          this.showMessage('Produto atualizado com sucesso!');
-          this.router.navigate(['/tela3']);
-        },
-        (error) => {
-          this.showMessage('Erro ao atualizar produto: ' + error.message);
-        }
-      );
+    if (this.produtoForm.valid) { // Verifica se o formulário é válido
+      if (this.produto.id) {
+        // Atualizar produto existente
+        this.produtoService.update(this.produto).subscribe(
+          () => {
+            this.showMessage('Produto atualizado com sucesso!');
+            this.router.navigate(['/tela3']);
+          },
+          (error) => {
+            this.showMessage('Erro ao atualizar produto: ' + error.message);
+          }
+        );
+      } else {
+        // Salvar novo produto
+        this.produtoService.save({ ...this.produto, id: this.generateUniqueId() }).subscribe(
+          () => {
+            this.showMessage('Produto salvo com sucesso!');
+            this.router.navigate(['/tela3']);
+          },
+          (error) => {
+            this.showMessage('Erro ao salvar produto: ' + error.message);
+          }
+        );
+      }
     } else {
-      // Salvar novo produto
-      this.produtoService.save({ ...this.produto, id: this.generateUniqueId() }).subscribe(
-        () => {
-          this.showMessage('Produto salvo com sucesso!');
-          this.router.navigate(['/tela3']);
-        },
-        (error) => {
-          this.showMessage('Erro ao salvar produto: ' + error.message);
-        }
-      );
+      this.showMessage('Por favor, preencha todos os campos obrigatórios.');
     }
   }
 

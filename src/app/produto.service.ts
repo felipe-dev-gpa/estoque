@@ -4,9 +4,12 @@ import { Observable } from 'rxjs';
 
 // Define a interface para o Produto
 export interface Produto {
+  marca: string;
   id: string;
   nome: string;
   tipo: string;
+  local: string;
+  codigoDeBarra: string;
 }
 
 @Injectable({

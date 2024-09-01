@@ -5,7 +5,7 @@
     </ion-title>
     <ion-buttons slot="end">
       <button class="custom-button" ion-button icon-only (click)="save()">
-        Salvar
+        <ion-icon name="checkmark"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -18,22 +18,75 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
-    <ion-item>
-      <ion-label position="stacked">Nome da peça:</ion-label>
-      <ion-input [(ngModel)]="produto.nome"></ion-input>
-    </ion-item>
+  <form #produtoForm="ngForm" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Nome</ion-label>
+        <ion-input [(ngModel)]="produto.nome" name="nome" required #nome="ngModel"></ion-input>
+        <div *ngIf="nome.invalid && (nome.dirty || nome.touched)" class="error-message">
+          Nome é obrigatório.
+        </div>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Categoria da peça:</ion-label>
-      <ion-select [(ngModel)]="produto.tipo">
-        <ion-select-option value="freios">Sistema de Freios</ion-select-option>
-        <ion-select-option value="filtro">Filtros</ion-select-option>
-        <ion-select-option value="suspensao">Sistema de Suspensão</ion-select-option>
-        <ion-select-option value="arrefecimento">Sistema de Arrefecimento</ion-select-option>
-        <ion-select-option value="motor">Sistema de Motor</ion-select-option>
-        <ion-select-option value="transmissao">Sistema de Transmissão</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
+      <ion-item>
+        <ion-label position="stacked">Categoria</ion-label>
+        <ion-select [(ngModel)]="produto.tipo" name="tipo" required #tipo="ngModel">
+          <ion-select-option value="frenagem">Sistema de Frenagem</ion-select-option>
+          <ion-select-option value="suspensão">Sistema de Suspensão</ion-select-option>
+          <ion-select-option value="arrefecimento">Sistema de Arrefecimento</ion-select-option>
+          <ion-select-option value="transmissão">Sistema de Transmissão</ion-select-option>
+          <ion-select-option value="exautão">Sistema de Exaustão</ion-select-option>
+          <ion-select-option value="iluminação">Sistema de Iluminação e Sinalização</ion-select-option>
+          <ion-select-option value="elétrico">Sistema Elétrico</ion-select-option>
+          <ion-select-option value="combustível">Sistema de Combustível</ion-select-option>
+          <ion-select-option value="ignição">Sistema de ignição</ion-select-option>
+          <ion-select-option value="eletrônico">Sistema eletrônico</ion-select-option>
+        </ion-select>
+        <div *ngIf="tipo.invalid && (tipo.dirty || tipo.touched)" class="error-message">
+          Categoria é obrigatória.
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Localização</ion-label>
+        <ion-input [(ngModel)]="produto.local" name="local" required #local="ngModel"></ion-input>
+        <div *ngIf="local.invalid && (local.dirty || local.touched)" class="error-message">
+          Localização é obrigatória.
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Código de barra</ion-label>
+        <ion-input [(ngModel)]="produto.codigoDeBarra" name="codigoDeBarra" required #codigoDeBarra="ngModel"></ion-input>
+        <div *ngIf="codigoDeBarra.invalid && (codigoDeBarra.dirty || codigoDeBarra.touched)" class="error-message">
+          Código de barra é obrigatório.
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Marca do fabricante</ion-label>
+        <ion-input [(ngModel)]="produto.marca" name="marca" required #marca="ngModel"></ion-input>
+        <div *ngIf="marca.invalid && (marca.dirty || marca.touched)" class="error-message">
+          Marca do fabricante é obrigatória.
+        </div>
+      </ion-item>
+
+    </ion-list>
+  </form>
 </ion-content>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+  /* Define a fonte para todo o conteúdo da página */
+  body, ion-content, ion-header, ion-toolbar, ion-title, ion-label, ion-input, ion-select, ion-item, ion-list {
+    font-family: "Nunito", sans-serif;
+    font-style: normal;
+  }
+
+  ion-list {
+    font-weight: 400; /* Ajuste o valor conforme necessário */
+  }
+
+
+</style>

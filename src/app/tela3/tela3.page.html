@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header class="custom-header" [translucent]="true">
   <ion-toolbar>
     <ion-title>
       <img src="assets/icon/logoestoque.png" class="logo" alt="Logo Estoque">
@@ -12,19 +12,42 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header collapse="condense" class="search-header">
     <ion-toolbar>
       <ion-title size="large">Inventário</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <!-- Adiciona a caixa de busca -->
+  <ion-searchbar class="custom-searchbar" [(ngModel)]="searchTerm" (ionInput)="filterItems()"></ion-searchbar>
+
   <ion-list>
-    <ion-item *ngFor="let produto of produtos" (click)="goToEdit(produto)">
+    <ion-item *ngFor="let produto of filteredProdutos" (click)="goToEdit(produto)">
       <button class="custom-button" ion-button icon-only (click)="deleteProduto($event, produto)">
-        <ion-icon name="trash" slot="start"></ion-icon>
+        <ion-icon name="trash" slot="start" ></ion-icon>
       </button>
-      <h2>  {{ produto.nome }}</h2>
-      <ion-note slot="end">{{ produto.tipo }}</ion-note>
+      <h6 class="produto-nome">{{ produto.nome }}</h6>
+      <h6 class="produto-info" slot="end">{{ produto.local }}</h6>
+      <ion-note class="produto-info" slot="end">{{ produto.marca }}</ion-note>
+      <ion-note class="produto-info" slot="end">{{ produto.tipo }}</ion-note>
+
+
     </ion-item>
+
   </ion-list>
 </ion-content>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+  /* Define a fonte para todo o conteúdo da página */
+  body, ion-content, ion-header, ion-toolbar, ion-title, ion-label, ion-input, ion-select, ion-item, ion-list {
+    font-family: "Nunito", sans-serif;
+    font-style: normal;
+  }
+
+  ion-list {
+    font-weight: 400; /* Ajuste o valor conforme necessário */
+  }
+
+</style>

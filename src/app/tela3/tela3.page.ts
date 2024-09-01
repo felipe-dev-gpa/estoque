@@ -9,6 +9,8 @@ import { ProdutoServiceService, Produto } from './../produto.service';
 })
 export class Tela3Page implements OnInit {
   produtos: Produto[] = [];
+  filteredProdutos: Produto[] = []; // Lista filtrada de produtos
+  searchTerm: string = ''; // Termo de busca
 
   constructor(
     public produtoService: ProdutoServiceService,
@@ -28,10 +30,23 @@ export class Tela3Page implements OnInit {
     this.produtoService.list().subscribe(
       (dados) => {
         this.produtos = dados;
+        this.filteredProdutos = dados; // Inicializa a lista filtrada com todos os produtos
       },
       (error) => {
         console.error('Erro ao carregar produtos', error);
       }
+    );
+  }
+
+  filterItems() {
+    const searchTermLower = this.searchTerm.toLowerCase(); // Converte para minúsculas para uma busca case-insensitive
+    this.filteredProdutos = this.produtos.filter(produto =>
+      produto.marca.toLowerCase().includes(searchTermLower) ||
+      produto.nome.toLowerCase().includes(searchTermLower) ||
+      produto.tipo.toLowerCase().includes(searchTermLower) ||
+      produto.local.toLowerCase().includes(searchTermLower) ||
+      produto.codigoDeBarra.toLowerCase().includes(searchTermLower) ||
+      produto.id.includes(this.searchTerm)
     );
   }
 
@@ -46,7 +61,7 @@ export class Tela3Page implements OnInit {
   }
 
   async deleteProduto(event: Event, produto: Produto) {
-    event.stopPropagation(); // Previne a propagação do click
+    event.stopPropagation(); // Impede que o clique no botão de exclusão acione o clique do item
 
     const alert = await this.alertCtrl.create({
       header: 'Excluir Produto',
@@ -67,14 +82,8 @@ export class Tela3Page implements OnInit {
                 this.loadProdutos();
                 console.log('Produto excluído com sucesso!');
               },
-              async (error) => {
+              (error) => {
                 console.error('Erro ao excluir produto', error);
-                const errorAlert = await this.alertCtrl.create({
-                  header: 'Erro',
-                  message: 'Erro ao excluir produto: ' + error.message,
-                  buttons: ['OK']
-                });
-                await errorAlert.present();
               }
             );
           }

@@ -1,92 +1,51 @@
-body {
-  background-color: #ffffff; /* Cor branca */
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
 }
 
-  #container {
-    text-align: center;
-
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-
-  }
-
-  #container strong {
-    font-size: 20px;
-    line-height: 26px;
-  }
-
-  #container p {
-    font-size: 16px;
-    line-height: 22px;
-
-    color: #8c8c8c;
-
-    margin: 0;
-  }
-
-  #container a {
-    text-decoration: none;
-  }
-
-  ion-toolbar {
-    display: flex; /* Usar Flexbox */
-    justify-content: center; /* Centraliza horizontalmente */
-  }
-
-  ion-title {
-    text-align: center; /* Centraliza o texto dentro do título */
-  }
-
-  .logo {
-    height: 40px;
-  }
-
-  $color: #0cf;
-
-  .button {
-    display: inline-block;
-    padding: 0.10rem 1.25rem;
-    border-radius: 10rem;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 1rem;
-    letter-spacing: 0.15rem;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: $color;
-      border-radius: 10rem;
-      z-index: -2;
-    }
-
-    &:before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0%;
-      height: 100%;
-      background-color: darken($color, 15%);
-      transition: all 0.3s;
-      border-radius: 10rem;
-      z-index: -1;
-    }
-
-  }
-  ion-item {
-    --border-radius: 50rem;  /* Adiciona bordas arredondadas */
-  }
+#container h2 {
+  margin: 10px 0; /* Ajuste o espaçamento entre os títulos e os inputs */
+  display: inline-block;
+  padding: 0.10rem 1.25rem;
+  border-radius: 10rem;
+  color: #458aa7; /* Cor do texto */
+  text-transform: uppercase;
+  font-size: 1rem;
+}
 
 
+#container ion-button {
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.10rem 1.25rem;
+  border-radius: 10rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #458aa7;
+  border: none;
+}
+
+.logo {
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+ion-content {
+  --background: #ffffff;
+}

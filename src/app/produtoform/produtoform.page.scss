@@ -1,76 +1,64 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-header {
+  --background: #ffffff; /* Define a cor de fundo do cabeçalho como branca */
 
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+ion-content {
+  --background: #ffffff; /* Fundo branco para o conteúdo */
 }
 
 ion-toolbar {
-  display: flex; /* Usar Flexbox */
-  justify-content: center; /* Centraliza horizontalmente */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  --background: #ffffff; /* Define a cor de fundo da barra de ferramentas como branca */
 }
 
-ion-title {
-  text-align: center; /* Centraliza o texto dentro do título */
-}
-
-.logo {
-  height: 40px;
-}
 .custom-button {
+  background-color: #458aa7;
+  color: white;
+  border-radius: 8px;
+  padding: 0 12px;
+  margin-right: auto; /* Centraliza o botão à esquerda */
   display: inline-block;
   padding: 0.10rem 1.25rem;
   border-radius: 10rem;
   color: #fff; /* Cor do texto */
   text-transform: uppercase;
   font-size: 1rem;
-  letter-spacing: 0.15rem;
-  transition: all 0.3s ease-in-out;
   position: relative;
   overflow: hidden;
   z-index: 1;
-  background-color: #0cf; /* Cor de fundo #0cf */
+  background-color: #458aa7; /* Cor do texto */; /* Cor de fundo #0cf */
   border: none; /* Remove a borda padrão */
+  margin-right: 50px;
 }
 
-.custom-button ion-icon {
-  font-size: 1.5rem; /* Tamanho do ícone */
+ion-title {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.custom-button::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+ion-buttons {
+  order: 10; /* Coloca o botão antes do título */
+}
+ion-list {
+  background-color: #ffffff; /* Define o fundo da lista como branco */
+  border-radius: 8px; /* Adiciona bordas arredondadas aos itens da lista */
+  padding: 20px; /* Adiciona espaçamento interno */
+}
+
+ion-item {
+  max-width: none; /* Ajuste conforme necessário */
   width: 100%;
-  height: 100%;
-  background-color: #0cf; /* Cor de fundo #0cf */
-  border-radius: 10rem;
-  z-index: -2;
+  --background: #ffffff; /* Fundo branco para ion-item */
+  --inner-background: #ffffff; /* Fundo branco para conteúdo interno do ion-item */
+  color: #458aa7;
 }
-
-
-
 

@@ -1,11 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      <img src="assets/icon/logoestoque.png" class="logo">
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -13,18 +5,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-    <h2>Número de acesso:</h2>
-    <ion-item>
-      <ion-input type="number" [(ngModel)]="numeroAcesso"></ion-input>
+  <div id="container">
+    <img src="assets/icon/logoestoque.png" class="logo">
+
+    <h2>Número de acesso</h2>
+    <ion-item style="background-color: #ffffff; --background: #ffffff;">
+      <ion-input fill="clear" type="number" [(ngModel)]="numeroAcesso" style="background-color: #ffffff; --background: #ffffff; color: #458aa7;"></ion-input>
     </ion-item>
 
-    <h2>Senha:</h2> <!-- Novo campo para a senha -->
-    <ion-item>
-      <ion-input type="password" [(ngModel)]="senha"></ion-input>
+    <h2 style="margin-bottom: 10px;">Senha</h2>
+
+    <ion-item style="background-color: #ffffff; --background: #ffffff;">
+      <ion-input fill="clear" type="password" [(ngModel)]="senha" style="background-color: #ffffff; --background: #ffffff; color: #458aa7;"></ion-input>
     </ion-item>
 
-    <ion-button fill="clear" (click)="login()" style="margin-top: 20px;">
+
+    <ion-button fill="clear" (click)="login()">
       Login
     </ion-button>
   </div>

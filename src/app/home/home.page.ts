@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-home',
@@ -8,28 +9,26 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  numeroAcesso: number = 0; // Inicializando com 0 ou use null se preferir
-  senha: string = ''; // Adicionando a variável para a senha
+  numeroAcesso: string = '';
+  senha: string = '';
 
   constructor(
     private alertController: AlertController,
-    private router: Router
+    private router: Router,
+    private afAuth: AngularFireAuth
   ) {}
 
   async login() {
-    const CodigoDeAcesso = 1234;
-    const SenhaCorreta = 'senha123'; // Suponha que esta seja a senha correta
-
-    if (this.numeroAcesso !== CodigoDeAcesso || this.senha !== SenhaCorreta) {
+    try {
+      await this.afAuth.signInWithEmailAndPassword(this.numeroAcesso, this.senha);
+      this.router.navigate(['/tela3']);
+    } catch (error) {
       const alert = await this.alertController.create({
         header: 'Erro',
         message: 'Número de acesso ou senha incorretos!',
         buttons: ['OK']
       });
-
       await alert.present();
-    } else {
-      this.router.navigate(['/tela3']); // Navegando para a próxima tela se os dados estiverem corretos
     }
   }
 }

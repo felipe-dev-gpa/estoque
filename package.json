@@ -25,6 +25,7 @@
     "@ionic/angular": "^8.0.0",
     "firebase": "^10.12.5",
     "ionicons": "^7.0.0",
+    "quagga": "^0.12.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"

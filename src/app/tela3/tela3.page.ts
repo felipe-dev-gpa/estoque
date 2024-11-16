@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { ProdutoServiceService, Produto } from './../produto.service';
 
+
 @Component({
   selector: 'app-tela3',
   templateUrl: './tela3.page.html',

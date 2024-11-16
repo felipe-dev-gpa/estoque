@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProdutoServiceService, Produto } from '../produto.service';
 import { ToastController } from '@ionic/angular';
 import { NgForm } from '@angular/forms'; // Import necessário para usar NgForm
+import * as Quagga from 'quagga'; // Certifique-se de importar o Quagga
 
 @Component({
   selector: 'app-produtoform',
@@ -21,9 +22,8 @@ export class ProdutoformPage implements OnInit {
     private toastCtrl: ToastController
   ) {}
   
-  GotoTela3(){
+  GotoTela3() {
     this.router.navigate(['/tela3']);
-
   }
 
   ngOnInit() {
@@ -75,5 +75,34 @@ export class ProdutoformPage implements OnInit {
 
   private generateUniqueId(): string {
     return Math.random().toString(36).substr(2, 9);
+  }
+
+  startBarcodeScanner() {
+    Quagga.init(
+      {
+        inputStream: {
+          name: 'Live',
+          type: 'LiveStream',
+          target: document.querySelector('#scanner-container'), // Elemento para renderizar o scanner
+        },
+        decoder: {
+          readers: ['code_128_reader'], // Tipos de códigos de barras suportados
+        },
+      },
+      (err: Error | null) => {
+        if (err) {
+          console.error('Erro ao inicializar o scanner:', err);
+          return;
+        }
+        Quagga.start();
+      }
+    );
+
+    Quagga.onDetected((result: any) => {
+      if (result && result.codeResult && result.codeResult.code) {
+        this.produto.codigoDeBarra = result.codeResult.code; // Atualiza o campo do formulário com o código escaneado
+        Quagga.stop(); // Para o scanner após a detecção
+      }
+    });
   }
 }

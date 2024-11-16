@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { ProdutoServiceService, Produto } from './../produto.service';
 import * as XLSX from 'xlsx';
+import * as Quagga from 'quagga';
 
 @Component({
   selector: 'app-tela3',
@@ -115,5 +116,34 @@ export class Tela3Page implements OnInit {
     link.download = fileName + EXCEL_EXTENSION;
     link.click();
     window.URL.revokeObjectURL(url);
+  }
+  startBarcodeScanner() {
+    Quagga.init(
+      {
+        inputStream: {
+          name: 'Live',
+          type: 'LiveStream',
+          target: document.querySelector('#scanner-container'), // Elemento para renderizar o scanner
+        },
+        decoder: {
+          readers: ['code_128_reader'], // Tipos de códigos de barras suportados
+        },
+      },
+      (err: Error | null) => {
+        if (err) {
+          console.error('Erro ao inicializar o scanner:', err);
+          return;
+        }
+        Quagga.start();
+      }
+    );
+
+    Quagga.onDetected((result: any) => {
+      if (result && result.codeResult && result.codeResult.code) {
+        this.searchTerm = result.codeResult.code; // Insere o código de barras na barra de busca
+        this.filterItems(); // Filtra os produtos com base no código escaneado
+        Quagga.stop(); // Para o scanner após a detecção
+      }
+    });
   }
 }

@@ -20,6 +20,10 @@ export class Tela3Page implements OnInit {
     private alertCtrl: AlertController
   ) {}
 
+  GoToHome(){
+    this.navCtrl.navigateForward('/home');
+  }
+
   ngOnInit() {
     this.loadProdutos();
   }

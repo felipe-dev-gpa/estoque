@@ -10,6 +10,7 @@ export interface Produto {
   tipo: string;
   local: string;
   codigoDeBarra: string;
+  dataFabricacao: '' // Adiciona o novo campo
 }
 
 @Injectable({

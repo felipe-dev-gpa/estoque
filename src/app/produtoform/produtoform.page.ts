@@ -11,7 +11,7 @@ import * as Quagga from 'quagga'; // Certifique-se de importar o Quagga
   styleUrls: ['./produtoform.page.scss'],
 })
 export class ProdutoformPage implements OnInit {
-  produto: Produto = { id: '', nome: '', tipo: '', local: '', codigoDeBarra: '', marca: '' };
+  produto: Produto = { id: '', nome: '', tipo: '', local: '', codigoDeBarra: '', marca: '',dataFabricacao:"" };
 
   @ViewChild('produtoForm', { static: false }) produtoForm!: NgForm; // Adicione o operador de asserção de não nulo
 

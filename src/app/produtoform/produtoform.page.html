@@ -67,7 +67,7 @@
         <div *ngIf="codigoDeBarra.invalid && (codigoDeBarra.dirty || codigoDeBarra.touched)" class="error-message">
           Código de barra é obrigatório.
         </div>
-      </ion-item>
+      </ion-item>     
 
       <ion-item>
         <ion-label position="stacked">Marca do fabricante</ion-label>
@@ -76,7 +76,14 @@
           Marca do fabricante é obrigatória.
         </div>
       </ion-item>
-
+      <ion-item>
+        <ion-label position="stacked">ultima entrada</ion-label>
+        <ion-datetime [(ngModel)]="produto.dataFabricacao" name="dataFabricacao" required #dataFabricacao="ngModel"></ion-datetime>
+        <div *ngIf="dataFabricacao.invalid && (dataFabricacao.dirty || dataFabricacao.touched)" class="error-message">
+          Data de Fabricação é obrigatória.
+        </div>
+      </ion-item>
+      
     </ion-list>
   </form>
 </ion-content>

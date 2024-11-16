@@ -53,3 +53,33 @@ ion-item {
   color: #458aa7;
 }
 
+/* Ajusta a posição do rótulo e da caixa de data */
+ion-item ion-label {
+  font-weight: bold;  /* Deixa o texto em negrito */
+  margin-bottom: 10px; /* Ajusta a distância entre o rótulo e a caixa de data */
+}
+ion-item {
+  margin-bottom:2px; /* Adiciona espaçamento entre os itens do formulário */
+}
+
+.error-message {
+  color: red; /* Define a cor da mensagem de erro */
+  font-size: 12px; /* Ajusta o tamanho da fonte da mensagem de erro */
+  margin-top: 4px;  /* Adiciona margem acima da mensagem de erro */
+}
+
+ion-datetime {
+  --border-radius: 10px; /* Bordas arredondadas */
+  --background: #fbfbfb; /* Cor de fundo */
+  --color: white; /* Cor do texto dentro do campo */
+}
+
+ion-item {
+  margin-bottom: 10px; /* Espaçamento inferior, ajuste conforme necessário */
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

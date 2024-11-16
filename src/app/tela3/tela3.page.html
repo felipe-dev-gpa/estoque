@@ -4,8 +4,13 @@
       <img src="assets/icon/logoestoque.png" class="logo" alt="Logo Estoque">
     </ion-title>
     <ion-buttons slot="end">
-      <button class="custom-button" ion-button icon-only (click)="goToForm()">
+      <!--botão de adicionar item-->
+      <button class="button-header" ion-button icon-only (click)="goToForm()">
         <ion-icon name="add"></ion-icon>
+      </button>
+      <!-- Adiciona botão para exportar planilha -->
+      <button class="button-header" ion-button icon-only (click)="exportToExcel()">
+        <ion-icon name="download"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -18,36 +23,32 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- Adiciona a caixa de busca -->
-  <ion-searchbar class="custom-searchbar" [(ngModel)]="searchTerm" (ionInput)="filterItems()"></ion-searchbar>
+  <!-- Contêiner que alinha a barra de pesquisa e o botão de escanear -->
+  <div class="search-bar-container">
+    <ion-searchbar class="custom-searchbar" [(ngModel)]="searchTerm" (ionInput)="filterItems()"></ion-searchbar>
+
+    <!-- Botão para escanear código de barras -->
+
+  </div>
+
+  <!-- Contêiner para o scanner de código de barras -->
+<div id="scanner-container" class="hidden" style="width: 100%; height: 300px;"></div>
+
 
   <ion-list>
-    <ion-item *ngFor="let produto of filteredProdutos" (click)="goToEdit(produto)">
-      <button class="custom-button" ion-button icon-only (click)="deleteProduto($event, produto)">
-        <ion-icon name="trash" slot="start" ></ion-icon>
+    <ion-item *ngFor="let produto of filteredProdutos" class="produto-item" (click)="goToEdit(produto)">
+      <!-- Botão da lixeira -->
+      <button class="button-trash" ion-button icon-only (click)="deleteProduto($event, produto)">
+        <ion-icon name="trash"></ion-icon>
       </button>
-      <h6 class="produto-nome">{{ produto.nome }}</h6>
-      <h6 class="produto-info" slot="end">{{ produto.local }}</h6>
-      <ion-note class="produto-info" slot="end">{{ produto.marca }}</ion-note>
-      <ion-note class="produto-info" slot="end">{{ produto.tipo }}</ion-note>
 
-
+      <!-- Contêiner de informações do produto -->
+      <div class="produto-info-container">
+        <h6 class="produto-nome">{{ produto.nome }}</h6>
+        <h6 class="produto-local">{{ produto.local }}</h6>
+        <ion-note>{{ produto.marca }}</ion-note>
+        <ion-note>{{ produto.tipo }}</ion-note>
+      </div>
     </ion-item>
-
   </ion-list>
 </ion-content>
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-
-  /* Define a fonte para todo o conteúdo da página */
-  body, ion-content, ion-header, ion-toolbar, ion-title, ion-label, ion-input, ion-select, ion-item, ion-list {
-    font-family: "Nunito", sans-serif;
-    font-style: normal;
-  }
-
-  ion-list {
-    font-weight: 400; /* Ajuste o valor conforme necessário */
-  }
-
-</style>

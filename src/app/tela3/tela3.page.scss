@@ -1,6 +1,6 @@
+/* Estilo do cabeçalho */
 ion-header {
   --background: #ffffff; /* Define a cor de fundo do cabeçalho como branca */
-
 }
 
 ion-content {
@@ -9,60 +9,64 @@ ion-content {
 
 ion-toolbar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /* Espaça os elementos ao longo da barra */
+  align-items: center; /* Alinha os itens verticalmente */
   --background: #ffffff; /* Define a cor de fundo da barra de ferramentas como branca */
 }
 
-.custom-button {
-  background-color: #458aa7;
-  color: white;
-  border-radius: 8px;
-  padding: 0 12px;
-  margin-right: auto; /* Centraliza o botão à esquerda */
-  display: inline-block;
-  padding: 0.10rem 1.25rem;
-  border-radius: 10rem;
-  color: #fff; /* Cor do texto */
-  text-transform: uppercase;
-  font-size: 1rem;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  background-color: #458aa7; /* Cor do texto */; /* Cor de fundo #0cf */
+/* Estilo do botão personalizado */
+.button-header{
+  background-color: #458aa7; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border-radius: 10rem; /* Bordas arredondadas */
+  padding: 0.30rem 1.25rem; /* Espaçamento interno */
   border: none; /* Remove a borda padrão */
-  margin-right: 50px;
+  margin-right: 10px; /* Margem à direita */
+  font-size: 1rem; /* Tamanho da fonte */
 }
 
+/* Estilo do título no cabeçalho */
 ion-title {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start; /* Alinha o título à esquerda */
   align-items: center;
 }
 
+/* Estilo do logo */
+/* Estilo do logo com responsividade */
 .logo {
-  width: 120px;
-  height: auto;
+  width: 120px; /* Largura fixa, você pode ajustar conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  max-width: 100%; /* Impede que a imagem ultrapasse o tamanho da tela */
+  display: block;
 }
 
+/* Estilo dos botões */
 ion-buttons {
-  order: 10; /* Coloca o botão antes do título */
+  display: flex; /* Exibe os botões em linha */
+  align-items: center; /* Alinha os botões verticalmente */
 }
+
+/* Estilo da lista */
 ion-list {
-  background-color: #ffffff; /* Define o fundo da lista como branco */
-  border-radius: 8px; /* Adiciona bordas arredondadas aos itens da lista */
-  padding: 20px; /* Adiciona espaçamento interno */
+  margin-left: -10px; /* Move o ion-list 10px para a esquerda */
+  background-color: #ffffff; /* Mantém o fundo branco */
+  padding: 10px;
+  overflow-y: auto;
 }
 
+
+/* Estilo dos itens da lista */
 ion-item {
-  max-width: none; /* Ajuste conforme necessário */
-  width: 100%;
-  --background: #ffffff; /* Fundo branco para ion-item */
-  --inner-background: #ffffff; /* Fundo branco para conteúdo interno do ion-item */
+  max-width: 100%; /* Permite que o item ocupe toda a largura disponível */
+  --background: #ffffff;
+  --inner-background: #ffffff;
   color: #458aa7;
+  word-wrap: break-word; /* Permite quebra de linha automática para textos longos */
 }
 
 
+/* Estilo da caixa de pesquisa personalizada */
 .custom-searchbar {
   --background: #ffffff; /* Cor de fundo da caixa de pesquisa */
   --placeholder-color: #000000; /* Cor do texto de placeholder */
@@ -72,4 +76,94 @@ ion-item {
   --padding-start: 15px; /* Espaçamento interno à esquerda */
   --padding-end: 15px; /* Espaçamento interno à direita */
   border-radius: 10rem; /* Bordas arredondadas */
+}
+/* Estilo geral para o item da lista */
+.produto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  min-width: 0; /* Previne estouros horizontais */
+}
+
+
+
+/* Ajuste do botão de lixeira */
+.button-trash {
+  background-color: #458aa7;
+  color: white;
+  border-radius: 10rem;
+  padding: 0.30rem 1.25rem;
+  border: none;
+}
+
+/* Estilo da informação do produto */
+.produto-info-container {
+  display: flex;
+  flex-direction: row; /* Coloca os itens em linha */
+  justify-content: space-between; /* Espaça os itens igualmente */
+  align-items: center;
+  flex-grow: 1; /* Faz o contêiner crescer para ocupar espaço */
+  margin-left: 10px;
+}
+
+.produto-nome, .produto-local, ion-note {
+  margin-right: 10px; /* Espaçamento entre os itens */
+  font-size: 1rem;
+  color: #458aa7;
+}
+
+.produto-local {
+  color: #000;
+}
+
+ion-note {
+  color: #757575;
+}
+
+/* Estilos responsivos com media queries */
+@media (max-width: 600px) {
+  .produto-info-container {
+    flex-direction: row; /* Mantém os itens em linha mesmo em telas pequenas */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas pequenas */
+  }
+
+  .produto-nome, .produto-local, ion-note {
+    font-size: 0.85rem; /* Reduz o tamanho da fonte em telas menores */
+    margin-right: 5px; /* Reduz o espaçamento em telas menores */
+  }
+
+  .button-trash {
+    padding: 0.25rem 1rem; /* Ajusta o padding do botão em telas menores */
+  }
+}
+
+@media (min-width: 601px) {
+  .produto-info-container {
+    flex-direction: row; /* Mantém os itens em linha em telas maiores */
+  }
+
+  .produto-nome, .produto-local, ion-note {
+    font-size: 1rem; /* Tamanho da fonte normal em telas maiores */
+    margin-right: 10px; /* Espaçamento normal entre os itens */
+  }
+}
+.search-bar-container {
+  display: flex;
+  align-items: center;
+}
+
+.custom-searchbar {
+  flex: 1;
+}
+
+.button-header {
+  margin-left: 10px;
+}
+
+.hidden {
+  display: none;
 }

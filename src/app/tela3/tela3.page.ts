@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { ProdutoServiceService, Produto } from './../produto.service';
-
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-tela3',
@@ -93,5 +93,27 @@ export class Tela3Page implements OnInit {
     });
 
     await alert.present();
+  }
+  exportToExcel() {
+    const worksheet = XLSX.utils.json_to_sheet(this.filteredProdutos); // Converte os produtos filtrados em uma planilha
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Produtos');
+
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    this.saveAsExcelFile(excelBuffer, 'produtos');
+  }
+
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    const EXCEL_EXTENSION = '.xlsx';
+
+    const data: Blob = new Blob([buffer], { type: EXCEL_TYPE });
+
+    const link = document.createElement('a');
+    const url = window.URL.createObjectURL(data);
+    link.href = url;
+    link.download = fileName + EXCEL_EXTENSION;
+    link.click();
+    window.URL.revokeObjectURL(url);
   }
 }

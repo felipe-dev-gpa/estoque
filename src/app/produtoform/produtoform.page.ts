@@ -20,6 +20,11 @@ export class ProdutoformPage implements OnInit {
     private router: Router,
     private toastCtrl: ToastController
   ) {}
+  
+  GotoTela3(){
+    this.router.navigate(['/tela3']);
+
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

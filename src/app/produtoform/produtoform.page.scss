@@ -14,24 +14,14 @@ ion-toolbar {
   --background: #ffffff; /* Define a cor de fundo da barra de ferramentas como branca */
 }
 
-.custom-button {
-  background-color: #458aa7;
-  color: white;
-  border-radius: 8px;
-  padding: 0 12px;
-  margin-right: auto; /* Centraliza o botão à esquerda */
-  display: inline-block;
-  padding: 0.10rem 1.25rem;
-  border-radius: 10rem;
-  color: #fff; /* Cor do texto */
-  text-transform: uppercase;
-  font-size: 1rem;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  background-color: #458aa7; /* Cor do texto */; /* Cor de fundo #0cf */
+.button-header{
+  background-color: #458aa7; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border-radius: 10rem; /* Bordas arredondadas */
+  padding: 0.30rem 1.25rem; /* Espaçamento interno */
   border: none; /* Remove a borda padrão */
-  margin-right: 50px;
+  margin-right: 10px; /* Margem à direita */
+  font-size: 1rem; /* Tamanho da fonte */
 }
 
 ion-title {

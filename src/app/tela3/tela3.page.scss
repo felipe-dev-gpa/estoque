@@ -1,6 +1,7 @@
 /* Estilo do cabeçalho */
 ion-header {
   --background: #ffffff; /* Define a cor de fundo do cabeçalho como branca */
+
 }
 
 ion-content {
@@ -9,8 +10,8 @@ ion-content {
 
 ion-toolbar {
   display: flex;
-  justify-content: space-between; /* Espaça os elementos ao longo da barra */
-  align-items: center; /* Alinha os itens verticalmente */
+  justify-content: space-between;
+  align-items: center;
   --background: #ffffff; /* Define a cor de fundo da barra de ferramentas como branca */
 }
 
@@ -28,41 +29,34 @@ ion-toolbar {
 /* Estilo do título no cabeçalho */
 ion-title {
   display: flex;
-  justify-content: flex-start; /* Alinha o título à esquerda */
+  justify-content: flex-end;
   align-items: center;
 }
+
 
 /* Estilo do logo */
 /* Estilo do logo com responsividade */
 .logo {
-  width: 120px; /* Largura fixa, você pode ajustar conforme necessário */
-  height: auto; /* Mantém a proporção da imagem */
-  max-width: 100%; /* Impede que a imagem ultrapasse o tamanho da tela */
-  display: block;
+  width: 120px;
+  height: auto;
 }
 
 /* Estilo dos botões */
 ion-buttons {
-  display: flex; /* Exibe os botões em linha */
-  align-items: center; /* Alinha os botões verticalmente */
+  order: 10; /* Coloca o botão antes do título */
 }
-
 /* Estilo da lista */
 ion-list {
-  margin-left: -10px; /* Move o ion-list 10px para a esquerda */
-  background-color: #ffffff; /* Mantém o fundo branco */
-  padding: 10px;
-  overflow-y: auto;
+  background-color: #ffffff; /* Define o fundo da lista como branco */
+  border-radius: 8px; /* Adiciona bordas arredondadas aos itens da lista */
+  padding: 20px; /* Adiciona espaçamento interno */
 }
-
-
-/* Estilo dos itens da lista */
 ion-item {
-  max-width: 100%; /* Permite que o item ocupe toda a largura disponível */
-  --background: #ffffff;
-  --inner-background: #ffffff;
+  max-width: none; /* Ajuste conforme necessário */
+  width: 100%;
+  --background: #ffffff; /* Fundo branco para ion-item */
+  --inner-background: #ffffff; /* Fundo branco para conteúdo interno do ion-item */
   color: #458aa7;
-  word-wrap: break-word; /* Permite quebra de linha automática para textos longos */
 }
 
 

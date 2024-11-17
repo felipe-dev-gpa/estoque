@@ -44,6 +44,18 @@ ion-header {
     line-height: 1.5;
     max-width: 90%; /* Limita a largura para melhor leitura */
     color:#458aa7; /* Cor preta para o texto */
-    font-family:fantasy;
 }
-  
+  /* Definindo as fontes para todo o conteúdo */
+body, ion-header, ion-toolbar, ion-title, ion-label, ion-input {
+  font-family: 'Nunito', sans-serif; /* Ou 'Raleway' ou 'Ubuntu' conforme sua preferência */
+}
+
+/* Para títulos, pode usar a fonte Raleway */
+h1, h2, h3 {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Você pode alternar entre as fontes como desejar */
+p {
+  font-family: 'Ubuntu', sans-serif;
+}

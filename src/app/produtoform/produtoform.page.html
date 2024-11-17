@@ -86,29 +86,20 @@
         </div>
       </ion-item>
       <ion-item>
-        <ion-label position="stacked">ultima entrada</ion-label>
-        <ion-datetime [(ngModel)]="produto.dataFabricacao" name="dataFabricacao" required #dataFabricacao="ngModel"></ion-datetime>
+        <ion-label position="stacked">Última Entrada</ion-label>
+        <ion-datetime 
+          [(ngModel)]="produto.dataFabricacao" 
+          name="dataFabricacao" 
+          required 
+          #dataFabricacao="ngModel" 
+          [max]="today" 
+        ></ion-datetime>
         <div *ngIf="dataFabricacao.invalid && (dataFabricacao.dirty || dataFabricacao.touched)" class="error-message">
-          Data de entrada é obrigatória.
+          Data de entrada é obrigatória e não pode ser uma data futura.
         </div>
       </ion-item>
+      
       
     </ion-list>
   </form>
 </ion-content>
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-
-  /* Define a fonte para todo o conteúdo da página */
-  body, ion-content, ion-header, ion-toolbar, ion-title, ion-label, ion-input, ion-select, ion-item, ion-list {
-    font-family: "Nunito", sans-serif;
-    font-style: normal;
-  }
-
-  ion-list {
-    font-weight: 400; /* Ajuste o valor conforme necessário */
-  }
-
-
-</style>

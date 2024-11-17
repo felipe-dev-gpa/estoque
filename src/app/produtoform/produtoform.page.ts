@@ -11,7 +11,16 @@ import * as Quagga from 'quagga'; // Certifique-se de importar o Quagga
   styleUrls: ['./produtoform.page.scss'],
 })
 export class ProdutoformPage implements OnInit {
-  produto: Produto = { id: '', nome: '', tipo: '', local: '', codigoDeBarra: '', marca: '',dataFabricacao:"" };
+  produto: Produto = { 
+    id: '', 
+    nome: '', 
+    tipo: '', 
+    local: '', 
+    codigoDeBarra: '', 
+    marca: '', 
+    dataFabricacao: "" 
+  };
+  today: string = new Date().toISOString().split('T')[0]; // Formato yyyy-MM-dd
 
   @ViewChild('produtoForm', { static: false }) produtoForm!: NgForm; // Adicione o operador de asserção de não nulo
 

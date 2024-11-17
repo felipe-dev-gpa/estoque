@@ -1,0 +1,49 @@
+ion-header {
+    --background: #ffffff; /* Define a cor de fundo do cabeçalho como branca */
+  
+  }
+  
+  ion-content {
+    --background: #ffffff; /* Fundo branco para o conteúdo */
+  }
+  
+  ion-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    --background: #ffffff; /* Define a cor de fundo da barra de ferramentas como branca */
+  }
+  
+  .button-header{
+    background-color: #458aa7; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border-radius: 10rem; /* Bordas arredondadas */
+    padding: 0.30rem 1.25rem; /* Espaçamento interno */
+    border: none; /* Remove a borda padrão */
+    margin-right: 10px; /* Margem à direita */
+    font-size: 1rem; /* Tamanho da fonte */
+  }
+  
+  
+  ion-title {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 120px;
+    height: auto;
+  }
+  
+  .text-center {
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 90%; /* Limita a largura para melhor leitura */
+    color:#458aa7; /* Cor preta para o texto */
+    font-family:fantasy;
+}
+  

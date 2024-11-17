@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'produtoform',
     loadChildren: () => import('./produtoform/produtoform.module').then( m => m.ProdutoformPageModule)
   },
+  {
+    path: 'info',
+    loadChildren: () => import('./info/info.module').then( m => m.InfoPageModule)
+  },
 ];
 
 @NgModule({

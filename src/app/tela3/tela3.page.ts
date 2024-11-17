@@ -20,6 +20,10 @@ export class Tela3Page implements OnInit {
     private alertCtrl: AlertController
   ) {}
 
+  GoToInfo(){
+    this.navCtrl.navigateForward('/info');
+  }
+
   GoToHome(){
     this.navCtrl.navigateForward('/home');
   }

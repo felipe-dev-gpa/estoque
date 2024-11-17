@@ -25,10 +25,19 @@
     <ion-list>
       <ion-item>
         <ion-label position="stacked">Nome</ion-label>
-        <ion-input [(ngModel)]="produto.nome" name="nome" required #nome="ngModel"></ion-input>
+        <ion-input [(ngModel)]="produto.nome" 
+                   name="nome" 
+                   required 
+                   #nome="ngModel" 
+                   maxlength="10">
+        </ion-input>
         <div *ngIf="nome.invalid && (nome.dirty || nome.touched)" class="error-message">
           Nome é obrigatório.
         </div>
+        <div *ngIf="(produto.nome?.length || 0) > 10" class="error-message">
+          O nome não pode exceder 10 caracteres.
+        </div>
+        
       </ion-item>
 
       <ion-item>
@@ -80,7 +89,7 @@
         <ion-label position="stacked">ultima entrada</ion-label>
         <ion-datetime [(ngModel)]="produto.dataFabricacao" name="dataFabricacao" required #dataFabricacao="ngModel"></ion-datetime>
         <div *ngIf="dataFabricacao.invalid && (dataFabricacao.dirty || dataFabricacao.touched)" class="error-message">
-          Data de Fabricação é obrigatória.
+          Data de entrada é obrigatória.
         </div>
       </ion-item>
       

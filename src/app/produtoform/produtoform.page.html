@@ -29,12 +29,12 @@
                    name="nome" 
                    required 
                    #nome="ngModel" 
-                   maxlength="10">
+                   maxlength="11">
         </ion-input>
         <div *ngIf="nome.invalid && (nome.dirty || nome.touched)" class="error-message">
           Nome é obrigatório.
         </div>
-        <div *ngIf="(produto.nome?.length || 0) > 10" class="error-message">
+        <div *ngIf="(produto.nome?.length || 0) > 11" class="error-message">
           O nome não pode exceder 10 caracteres.
         </div>
         
